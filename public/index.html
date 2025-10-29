@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fortnite Tracker (robusto)</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fortnite Tracker — versión robusta</h1>
+      <p class="subtitle">Scraping del <code>&lt;time datetime&gt;</code> real · sesiones por inactividad · solapes (2+)</p>
+      <div id="status"></div>
+    </header>
+
+    <section>
+      <h2>¿Quién está jugando ahora?</h2>
+      <table id="playingNowTable" class="table">
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th>Última partida (Europe/Madrid)</th>
+            <th>Jugando ahora</th>
+            <th>Enlace</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Última partida detectada</h2>
+      <div id="lastMatch" class="card">—</div>
+    </section>
+
+    <section>
+      <h2>Sesiones</h2>
+      <div id="sessions"></div>
+    </section>
+
+    <section>
+      <h2>Solapes (2 o más jugadores)</h2>
+      <div id="overlapsSummary" class="card">—</div>
+      <table id="overlapsTable" class="table">
+        <thead>
+          <tr>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Duración</th>
+            <th>Jugadores</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <footer>
+      <small>Zona horaria: <strong>Europe/Madrid</strong>. Auto‑refresh cada 15s.</small>
+    </footer>
+  </div>
+  <script src="/client.js"></script>
+</body>
+</html>
