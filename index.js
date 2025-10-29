@@ -21,7 +21,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ========= Config =========
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const INACTIVITY_MINUTES = 30;      // inactividad para cerrar sesión
 const SCRAPE_INTERVAL_MS = 60_000;  // frecuencia de scraping
 const TZ = 'Europe/Madrid';
@@ -122,13 +122,11 @@ let browser;
 let context;
 
 async function setupBrowser() {
-  browser = await chromium.launch({ headless: true });
-  const iPhone = devices['Desktop Chrome'];
-  context = await browser.newContext({
-    ...iPhone,
-    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36',
-    viewport: { width: 1280, height: 900 },
-  });
+  browser = await chromium.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+      });
+  
 
   // Bloquear recursos pesados para mayor estabilidad
   await context.route('**/*', (route) => {
